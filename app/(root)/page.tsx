@@ -10,9 +10,10 @@ export default async function Home({
 }) {
   // for URL Server rendering Search form
   const query = (await searchParams).query;
+  const params = { search: query || null };
 
   // To revalidate data in live when a new post is created
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
 
   return (
     <>
