@@ -51,7 +51,12 @@ function StartupForm() {
           variant: "destructive",
         });
 
-        return { ...prevState, error: "Validation failed", status: "ERROR" };
+        return {
+          ...prevState,
+          error: "Validation failed",
+          status: "ERROR",
+          payload: formData,
+        };
       }
       toast({
         title: "Error",
@@ -85,6 +90,7 @@ function StartupForm() {
             className="startup-form_input"
             required
             placeholder="Startup Title"
+            defaultValue={(state.payload?.get("title") || "") as string}
           />
           {errors.title && <p className="startup-form_error">{errors.title}</p>}
         </div>{" "}
@@ -98,6 +104,7 @@ function StartupForm() {
             className="startup-form_textarea"
             required
             placeholder="Startup Description"
+            defaultValue={(state.payload?.get("description") || "") as string}
           />
           {errors.description && (
             <p className="startup-form_error">{errors.description}</p>
@@ -113,6 +120,7 @@ function StartupForm() {
             className="startup-form_input"
             required
             placeholder="Startup Category (Tech, Health, Education...)"
+            defaultValue={(state.payload?.get("category") || "") as string}
           />
           {errors.category && (
             <p className="startup-form_error">{errors.category}</p>
@@ -128,6 +136,7 @@ function StartupForm() {
             className="startup-form_input"
             required
             placeholder="Startup Image URL"
+            defaultValue={(state.payload?.get("link") || "") as string}
           />
           {errors.link && <p className="startup-form_error">{errors.link}</p>}
         </div>
