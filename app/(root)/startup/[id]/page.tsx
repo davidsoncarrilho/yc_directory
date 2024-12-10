@@ -35,7 +35,7 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
         <img
           src={post.image}
           alt="thumbnail"
-          className="w-full h-auto rounded-xl"
+          className="w-full h-auto rounded-xl max-w-[560px] mx-auto"
         />
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex-between gap-5">
@@ -46,8 +46,8 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
               <Image
                 src={post.author.image}
                 alt="avatar"
-                width={64}
-                height={64}
+                width={40}
+                height={40}
                 className="rounded-full drop-shadow-lg"
               />
               <div>
